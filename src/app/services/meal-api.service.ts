@@ -17,7 +17,7 @@ export class MealService {
   findByCategory(name: string): Observable<MEAL_ListItem[]> {
     // retourne l'observable
     return this.http
-      .get<MEAL_ListItem[]>(MEAL_API + 'filter.php?c=Seafood')
+      .get<MEAL_ListItem[]>(MEAL_API + 'filter.php?c=' + name)
       .pipe(
         map((res: any) => res.meals)
       )

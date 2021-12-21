@@ -1,0 +1,7 @@
+*** what-to-eat: exos ***
+
+BACK: https://www.themealdb.com/api/json/v1/1/categories.php
+Ajouter à l'application what-to-eat une route /category affichant la liste
+des catégories. Chaque ligne de cette liste devra comporter:
+- le nom de la catégorie
+- l'image miniature associée (thumbnail)

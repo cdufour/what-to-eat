@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MEAL_ListItem } from '../model';
+import { Component, OnInit } from '@angular/core';
+import { MEAL_ListItem, MEAL_Category } from '../model';
 import { MealService } from '../services/meal-api.service';
 
 @Component({
@@ -7,22 +7,33 @@ import { MealService } from '../services/meal-api.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   meals: MEAL_ListItem[] | null = null;
+  categories: string[] = [];
+  defaultCategory: string = 'Chicken';
 
-  constructor(private mealService: MealService) {
-    this.loadData();
+  constructor(private mealService: MealService) {}
+
+  ngOnInit(): void {
+    this.loadMeals();
+
+    // Object.keys retroune un tableau des clés de l'objet passé en entrée
+    this.categories = Object.keys(MEAL_Category);
   }
 
-  loadData() {
-    console.log('loading...');
+  loadMeals(): void {
     this.mealService
-      .findByCategory("Seafood")
+      .findByCategory(this.defaultCategory)
       .subscribe((meals: MEAL_ListItem[]) => {
-        console.log(meals);
         this.meals = meals;
     })
+  }
+
+  onChange(event: any): void {
+    // récupère la nouvelle valeur du ion-select
+    this.defaultCategory = event.target.value;
+    this.loadMeals();
   }
 
 }

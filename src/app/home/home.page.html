@@ -1,17 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Que manger aujourd'hui ?
+      Que déguster aujourd'hui ?
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="medium">Que manger aujourd'hui ?</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-select 
+    [value]="defaultCategory" 
+    cancelText="Annuler"
+    (ionChange)="onChange($event)"
+  >
+    <ion-select-option 
+      *ngFor="let category of categories">{{ category }}</ion-select-option>
+  </ion-select>
 
   <ion-grid>
     <ion-row>
