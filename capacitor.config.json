@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "what-to-eat",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
